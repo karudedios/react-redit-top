@@ -4,7 +4,7 @@
   "description": "Repository for building a React App for listing Redit's top x entries",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint src/"
   },
   "repository": {
     "type": "git",
