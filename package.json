@@ -1,0 +1,57 @@
+{
+  "name": "react-reddit-top",
+  "version": "0.0.1",
+  "description": "Repository for building a React App for listing Redit's top x entries",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src/",
+    "clear": "rimraf dist/",
+    "build": "npm run clear && NODE_ENV=production webpack -p",
+    "build:dev": "npm run clear && NODE_ENV=development webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karudedios/react-redit-top.git"
+  },
+  "keywords": [
+    "react",
+    "reddit",
+    "api",
+    "redux",
+    "saga"
+  ],
+  "author": "Carlos de Dios <c.dedios@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karudedios/react-redit-top/issues"
+  },
+  "homepage": "https://github.com/karudedios/react-redit-top#readme",
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-flow": "^7.0.0",
+    "@babel/plugin-transform-flow-strip-types": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^9.0.0",
+    "babel-loader": "^8.0.0",
+    "babel-plugin-react-flow-props-to-prop-types": "^0.15.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^2.0.0-beta",
+    "compression-webpack-plugin": "^1.1.12",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "flow": "^0.2.3",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.7"
+  }
+}
