@@ -9,10 +9,10 @@ module.exports = {
 
   resolve: {
     alias: {
-      'utils': resolve(__dirname, '..', 'src', 'utils'),
       'sagas': resolve(__dirname, '..', 'src', 'sagas'),
       'actions': resolve(__dirname, '..', 'src', 'actions'),
       'reducers': resolve(__dirname, '..', 'src', 'reducers'),
+      'factories': resolve(__dirname, '..', 'src', 'factories'),
       'containers': resolve(__dirname, '..', 'src', 'containers'),
       'components': resolve(__dirname, '..', 'src', 'components'),
     },

@@ -1,6 +1,6 @@
 {
   "presets": [
-    "env",
+    "@babel/preset-env",
     "@babel/preset-react"
   ],
   "plugins": [
@@ -8,6 +8,10 @@
     "transform-class-properties",
     "transform-object-rest-spread",
     "react-flow-props-to-prop-types",
+    ["@babel/plugin-transform-runtime", {
+      "corejs": 2,
+      "regenerator": true
+    }],
     "@babel/plugin-transform-flow-strip-types",
   ],
 }
