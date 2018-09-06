@@ -7,7 +7,9 @@
     "lint": "eslint src/",
     "clear": "rimraf dist/",
     "build": "npm run clear && NODE_ENV=production webpack -p",
-    "build:dev": "npm run clear && NODE_ENV=development webpack"
+    "build:dev": "npm run clear && NODE_ENV=development webpack",
+    "watch:c9": "npm run watch -- --host \"$IP\" --port \"$PORT\" --public cn-webhookers-karudedios.c9users.io:8080",
+    "watch": "webpack-dev-server --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -52,6 +54,10 @@
     "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.7"
+    "webpack-dev-server": "^3.1.8"
+  },
+  "dependencies": {
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0"
   }
 }
