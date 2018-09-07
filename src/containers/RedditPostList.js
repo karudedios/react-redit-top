@@ -44,7 +44,7 @@ class RedditPostList extends React.Component<Props, State> {
         ...dismissingPosts,
         [id]: true,
       },
-    }, function () {
+    }, function autoDismissPost() {
       delay(250).then(() => {
         removePost(id);
 

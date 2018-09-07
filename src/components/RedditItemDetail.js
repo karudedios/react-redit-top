@@ -56,10 +56,6 @@ export default function RedditItemDetail({ post }: Props) {
     );
   };
 
-  console.log(
-    data.toJS(),
-  );
-
   return (
     <Container>
       <Info>
