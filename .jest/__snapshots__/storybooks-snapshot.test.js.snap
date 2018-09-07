@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/List it renders nothing if no \`render\` mechanism is provided 1`] = `null`;
+
+exports[`Storyshots Components/List it renders nothing if no items are provided 1`] = `null`;
+
+exports[`Storyshots Components/List it renders properly if \`items\` and \`render\` are provided 1`] = `
+<ul>
+  <li>
+    1
+  </li>
+  <li>
+    2
+  </li>
+  <li>
+    3
+  </li>
+  <li>
+    4
+  </li>
+  <li>
+    5
+  </li>
+</ul>
+`;
+
+exports[`Storyshots Components/List it should let you customize the \`root\` element in which the list is rendered 1`] = `
+<div>
+  <div>
+    1
+  </div>
+  <div>
+    2
+  </div>
+  <div>
+    3
+  </div>
+  <div>
+    4
+  </div>
+  <div>
+    5
+  </div>
+</div>
+`;

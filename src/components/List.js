@@ -9,6 +9,8 @@ type Prop<T> = {
 };
 
 export default function List({ root, items, render }: Prop) {
+  if (!items || !render) return null;
+
   return React.createElement(
     root,
     null,

@@ -12,6 +12,13 @@
       "corejs": 2,
       "regenerator": true
     }],
-    "@babel/plugin-transform-flow-strip-types",
+    "@babel/plugin-transform-flow-strip-types"
   ],
+  "env": {
+    "test": {
+      "plugins": [
+        "require-context-hook",
+      ]
+    }
+  }
 }
