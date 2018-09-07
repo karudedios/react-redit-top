@@ -1,13 +1,15 @@
 import moment from 'moment';
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import FadingSwipeable from './FadingSwipeable';
 
 type Props = {
   post: Object,
+  isDismissing?: bool,
   onPostSelect?: Function,
   onPostDismiss?: Function,
+  onPostDismissAsync?: Function,
 };
 
 const Post = styled.div`
@@ -39,7 +41,7 @@ const ImagePreview = styled.div`
 
 const Header = styled.h4`
   margin: 0;
-  width: 300px;
+  width: 280px;
   margin-top: 5px;
 `;
 
@@ -54,7 +56,7 @@ const PostDetails = styled.div`
     margin-left: 10px;
 
     ${Header} {
-      width: 230px;
+      width: 220px;
     }
   }
 `;
@@ -88,11 +90,34 @@ const DismissButton = styled.div`
   position: absolute;
 `;
 
-export default function RedditItem({ post, onPostSelect, onPostDismiss }: Props) {
+const SwipeRight = keyframes`
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+`;
+
+const FadingSwipeableDismissed = styled(FadingSwipeable)`
+  animation-fill-mode: forwards;
+  ${props => (props.fading ? `animation: 300ms ${SwipeRight} ease-in;` : '')}
+`;
+
+export default function RedditItem({
+  post,
+  isDismissing,
+  onPostSelect,
+  onPostDismiss,
+  onPostDismissAsync,
+}: Props) {
   if (!post) return null;
 
   const selectPost = () => onPostSelect(post.id);
   const dismissPost = () => onPostDismiss(post.id);
+  const dismissPostWithAnimation = () => onPostDismissAsync(post.id);
 
   const renderImagePreview = () => {
     if (!post.thumbnail) return null;
@@ -105,8 +130,9 @@ export default function RedditItem({ post, onPostSelect, onPostDismiss }: Props)
   };
 
   return (
-    <FadingSwipeable
+    <FadingSwipeableDismissed
       threshold={75}
+      fading={isDismissing}
       onSwipeEnd={({ pastThreshold }) => (pastThreshold ? dismissPost() : null)}
     >
       <Post onClick={selectPost}>
@@ -135,16 +161,18 @@ export default function RedditItem({ post, onPostSelect, onPostDismiss }: Props)
 
         <DismissButton
           title="dismiss post"
-          onClick={dismissPost}
+          onClick={dismissPostWithAnimation}
         >
           &times;
         </DismissButton>
       </Post>
-    </FadingSwipeable>
+    </FadingSwipeableDismissed>
   );
 }
 
 RedditItem.defaultProps = {
+  isDismissing: false,
   onPostSelect: x => x,
   onPostDismiss: x => x,
+  onPostDismissAsync: x => x,
 };

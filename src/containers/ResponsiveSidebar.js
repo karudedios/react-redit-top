@@ -15,7 +15,7 @@ const mobileContext = window.matchMedia('(max-width: 800px)');
 
 const StyledSidebar = styled(Sidebar)`
   z-index: 2;
-  width: 350px;
+  width: 300px;
   height: 100%;
   display: flex;
   overflow: auto;

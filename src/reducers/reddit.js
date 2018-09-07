@@ -6,6 +6,7 @@ const Reddit = new Record({
   posts: List(),
   failed: false,
   loading: false,
+  selectedPost: {},
 }, 'Reddit');
 
 const callOrReturn = (f) => {
@@ -35,5 +36,28 @@ export default mapReducer({
     error,
     failed: true,
     loading: false,
+  }),
+
+  [REDDIT_TYPES.SELECT_POST]: (id, state) => {
+    const predicate = ({ data }) => data.id === id;
+    const affectedIndex = state.get('posts').findIndex(predicate);
+    const post = state.getIn(['posts', affectedIndex]);
+
+    const updatedState = state.setIn(['posts', affectedIndex], {
+      ...post,
+
+      data: {
+        ...post.data,
+        visited: true,
+      },
+    });
+
+    return updatedState.merge({
+      selectedPost: updatedState.get('posts').find(predicate),
+    });
+  },
+
+  [REDDIT_TYPES.REMOVE_POST]: (id, state) => state.merge({
+    posts: state.get('posts').filter(({ data }) => data.id !== id),
   }),
 });
