@@ -4,10 +4,12 @@
   "description": "Repository for building a React App for listing Redit's top x entries",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
     "lint": "eslint src/",
     "clear": "rimraf dist/",
     "build": "npm run clear && NODE_ENV=production webpack -p",
     "build:dev": "npm run clear && NODE_ENV=development webpack",
+    "storybook": "start-storybook -p \"$PORT\" -h \"$IP\" -c .storybook",
     "watch:c9": "npm run watch -- --host \"$IP\" --port \"$PORT\" --public cn-webhookers-karudedios.c9users.io:8080",
     "watch": "webpack-dev-server --config webpack.config.js"
   },
@@ -36,11 +38,15 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime-corejs2": "^7.0.0",
-    "axios": "^0.18.0",
-    "babel-core": "^6.26.3",
+    "@storybook/addon-storyshots": "^4.0.0-alpha.20",
+    "@storybook/react": "^4.0.0-alpha.20",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.4.2",
     "babel-loader": "^8.0.0",
     "babel-plugin-react-flow-props-to-prop-types": "^0.15.0",
+    "babel-plugin-require-context-hook": "^1.0.0",
+    "babel-plugin-styled-components": "^1.6.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "compression-webpack-plugin": "^1.1.12",
@@ -54,17 +60,44 @@
     "eslint-plugin-react": "^7.11.1",
     "flow": "^0.2.3",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.5.0",
+    "json-loader": "^0.5.7",
+    "react-test-renderer": "^16.5.0",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "immutable": "^3.8.2",
+    "moment": "^2.22.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
+    "react-markdown": "^3.6.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-immutable": "^4.0.0",
-    "redux-saga": "^0.16.0"
+    "redux-saga": "^0.16.0",
+    "styled-components": "^3.4.5"
+  },
+  "jest": {
+    "roots": [
+      "./.jest"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "moduleDirectories": [
+      "src",
+      "node_modules"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/vendor.js",
+      "!src/**/config.js",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/path/to/dir/"
+    ],
+    "setupTestFrameworkScriptFile": "./.jest/config.js"
   }
 }
