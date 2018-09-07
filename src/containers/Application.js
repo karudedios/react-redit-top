@@ -1,8 +1,13 @@
 import * as React from 'react';
 import RedditPostList from './RedditPostList';
+import ResponsiveSidebar from './ResponsiveSidebar';
 
 export default function Application() {
   return (
-    <RedditPostList />
+    <React.Fragment>
+      <ResponsiveSidebar>
+        <RedditPostList />
+      </ResponsiveSidebar>
+    </React.Fragment>
   );
 }
