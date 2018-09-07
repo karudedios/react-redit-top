@@ -1,5 +1,6 @@
 import moment from 'moment';
 import * as React from 'react';
+import Markdown from 'react-markdown';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -51,9 +52,7 @@ export default function RedditItemDetail({ post }: Props) {
     if (!data.get('selftext')) return null;
 
     return (
-      <h5>
-        { data.get('selftext') }
-      </h5>
+      <Markdown source={data.get('selftext')} />
     );
   };
 

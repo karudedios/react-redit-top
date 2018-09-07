@@ -120,11 +120,20 @@ export default function RedditItem({
   const dismissPostWithAnimation = () => onPostDismissAsync(post.id);
 
   const renderImagePreview = () => {
-    if (!post.thumbnail) return null;
+    let preview = post.thumbnail;
+    const previewImages = (post.preview && post.preview.images);
+
+    if (preview === 'self' || preview === 'default') {
+      if (!previewImages) {
+        return null;
+      }
+
+      preview = previewImages[0].source.url;
+    }
 
     return (
       <ImagePreview
-        style={{ backgroundImage: `url(${post.thumbnail})` }}
+        style={{ backgroundImage: `url(${preview})` }}
       />
     );
   };
