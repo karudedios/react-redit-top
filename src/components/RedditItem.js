@@ -39,9 +39,6 @@ const Header = styled.h4`
   margin: 0;
   width: 300px;
   margin-top: 5px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 `;
 
 const PostDetails = styled.div`
@@ -110,10 +107,12 @@ export default function RedditItem({ post, onPostSelect, onPostDismiss }: Props)
       { renderImagePreview() }
 
       <PostDetails>
-        <Header title={post.title}>{post.title}</Header>
+        <Header>{post.title}</Header>
 
         <Info>
-          <span>{post.author}</span>
+          <span>
+            {`By: ${post.author}`}
+          </span>
           <span>{ moment(post.created).from(Date.now()) }</span>
         </Info>
 
