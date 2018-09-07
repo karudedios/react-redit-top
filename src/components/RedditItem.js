@@ -2,6 +2,8 @@ import moment from 'moment';
 import * as React from 'react';
 import styled from 'styled-components';
 
+import FadingSwipeable from './FadingSwipeable';
+
 type Props = {
   post: Object,
   onPostSelect?: Function,
@@ -103,37 +105,42 @@ export default function RedditItem({ post, onPostSelect, onPostDismiss }: Props)
   };
 
   return (
-    <Post onClick={selectPost}>
-      { renderImagePreview() }
+    <FadingSwipeable
+      threshold={75}
+      onSwipeEnd={({ pastThreshold }) => (pastThreshold ? dismissPost() : null)}
+    >
+      <Post onClick={selectPost}>
+        { renderImagePreview() }
 
-      <PostDetails>
-        <Header>{post.title}</Header>
+        <PostDetails>
+          <Header>{post.title}</Header>
 
-        <Info>
-          <span>
-            {`By: ${post.author}`}
-          </span>
-          <span>{ moment(post.created).from(Date.now()) }</span>
-        </Info>
+          <Info>
+            <span>
+              {`By: ${post.author}`}
+            </span>
+            <span>{ moment(post.created).from(Date.now()) }</span>
+          </Info>
 
-        <Info>
-          <span>
-            { `${post.num_comments} Comments` }
-          </span>
-          <ReadBullet
-            read={post.visited}
-            title={post.visited ? 'read' : 'unread'}
-          />
-        </Info>
-      </PostDetails>
+          <Info>
+            <span>
+              { `${post.num_comments} Comments` }
+            </span>
+            <ReadBullet
+              read={post.visited}
+              title={post.visited ? 'read' : 'unread'}
+            />
+          </Info>
+        </PostDetails>
 
-      <DismissButton
-        title="dismiss post"
-        onClick={dismissPost}
-      >
-        &times;
-      </DismissButton>
-    </Post>
+        <DismissButton
+          title="dismiss post"
+          onClick={dismissPost}
+        >
+          &times;
+        </DismissButton>
+      </Post>
+    </FadingSwipeable>
   );
 }
 

@@ -37,10 +37,6 @@ const StyledSidebar = styled(Sidebar)`
   }
 `;
 
-const Backdrop = styled.css`
-
-`;
-
 export default class ResponsiveSidebar extends React.Component<Props, State> {
   state = {
     open: false,
@@ -76,8 +72,6 @@ export default class ResponsiveSidebar extends React.Component<Props, State> {
   render() {
     const { children } = this.props;
     const { open, autoHide } = this.state;
-
-    console.log(StyledSidebar, <Backdrop />);
 
     return (
       <StyledSidebar
