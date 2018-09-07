@@ -1,10 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Sidebar from 'components/Sidebar';
-
-type Props = {
-  children: [React.Component],
-};
+import Hamburger from 'components/Hamburger';
+import RedditPostList from './RedditPostList';
 
 type State = {
   open: bool,
@@ -37,7 +35,7 @@ export const StyledSidebar = styled(Sidebar)`
   }
 `;
 
-export default class ResponsiveSidebar extends React.Component<Props, State> {
+export default class ResponsiveSidebar extends React.Component<null, State> {
   state = {
     open: false,
     autoHide: mobileContext.matches,
@@ -70,17 +68,22 @@ export default class ResponsiveSidebar extends React.Component<Props, State> {
   };
 
   render() {
-    const { children } = this.props;
     const { open, autoHide } = this.state;
 
     return (
-      <StyledSidebar
-        open={open}
-        autoHide={autoHide}
-        triggerClose={this.closeSidebar}
-      >
-        { children }
-      </StyledSidebar>
+      <React.Fragment>
+        <Hamburger onClick={this.openSidebar} />
+
+        <StyledSidebar
+          open={open}
+          autoHide={autoHide}
+          triggerClose={this.closeSidebar}
+        >
+          <RedditPostList
+            onChildrenClick={this.closeSidebar}
+          />
+        </StyledSidebar>
+      </React.Fragment>
     );
   }
 }

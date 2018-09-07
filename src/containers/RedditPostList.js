@@ -12,6 +12,7 @@ type Props = {
   fetchPosts: Function,
   removePost: Function,
   selectPost: Function,
+  onChildrenClick?: Function,
 };
 
 type State = {
@@ -21,6 +22,10 @@ type State = {
 const delay = time => new Promise(resolve => setTimeout(resolve, time));
 
 class RedditPostList extends React.Component<Props, State> {
+  static defaultProps = {
+    onChildrenClick: x => x,
+  };
+
   state = {
     dismissingPosts: {},
   };
@@ -53,9 +58,16 @@ class RedditPostList extends React.Component<Props, State> {
     });
   }
 
+  selectPost = (id) => {
+    const { selectPost, onChildrenClick } = this.props;
+
+    selectPost(id);
+    onChildrenClick();
+  };
+
   render() {
     const { dismissingPosts } = this.state;
-    const { posts, selectPost, removePost } = this.props;
+    const { posts, removePost } = this.props;
 
     return (
       <List
@@ -65,8 +77,8 @@ class RedditPostList extends React.Component<Props, State> {
           <RedditItem
             post={data}
             key={data.id}
-            onPostSelect={selectPost}
             onPostDismiss={removePost}
+            onPostSelect={this.selectPost}
             isDismissing={dismissingPosts[data.id]}
             onPostDismissAsync={this.removePostAsync}
           />
