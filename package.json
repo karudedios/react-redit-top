@@ -10,7 +10,6 @@
     "build": "npm run clear && NODE_ENV=production webpack -p",
     "build:dev": "npm run clear && NODE_ENV=development webpack",
     "storybook": "start-storybook -p \"$PORT\" -h \"$IP\" -c .storybook",
-    "watch:c9": "npm run watch -- --host \"$IP\" --port \"$PORT\" --public cn-webhookers-karudedios.c9users.io:8080",
     "watch": "webpack-dev-server --config webpack.config.js"
   },
   "repository": {
