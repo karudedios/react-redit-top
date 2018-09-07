@@ -1,15 +1,20 @@
+/* eslint-disable */
 import axios from 'axios';
+import _response from './top.js';
 
-const context = axios("https://www.reddit.com/");
+const context = axios.create({
+  baseURL: 'https://www.reddit.com/',
+});
 
-const serialize = (obj) => `?${
-  Object.keys(obj).map((k) => `${k}=${encodeURIComponent(obj[k])}`).join('&')
+const serialize = obj => `?${
+  Object.keys(obj).filter(k => obj[k]).map(k => `${k}=${encodeURIComponent(obj[k])}`).join('&')
 }`;
 
-export default({
-  top({ after, limit = 25 }) {
-    return context
-      .get(`top${serialize({ after, limit })}`)
-      .then(res => res.json());
+export default ({
+  top({ limit = 25 } = {}) {
+    return new Promise(resolve => {
+      const { children } = _response.data;
+      resolve(children.slice(0, limit));
+    });
   },
 });
