@@ -6,7 +6,7 @@ const Reddit = new Record({
   posts: List(),
   failed: false,
   loading: false,
-  selectedPost: {},
+  selectedPost: null,
 }, 'Reddit');
 
 const callOrReturn = (f) => {

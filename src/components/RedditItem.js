@@ -145,7 +145,9 @@ export default function RedditItem({
             <span>
               {`By: ${post.author}`}
             </span>
-            <span>{ moment(post.created).from(Date.now()) }</span>
+            <span>
+              { moment.unix(post.created_utc).fromNow() }
+            </span>
           </Info>
 
           <Info>

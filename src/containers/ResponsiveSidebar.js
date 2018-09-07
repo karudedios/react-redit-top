@@ -13,7 +13,7 @@ type State = {
 
 const mobileContext = window.matchMedia('(max-width: 800px)');
 
-const StyledSidebar = styled(Sidebar)`
+export const StyledSidebar = styled(Sidebar)`
   z-index: 2;
   width: 300px;
   height: 100%;
