@@ -1,6 +1,7 @@
 (I sort of made a typo on `reddit` on the repo name please don't pay too much attention to that :sweat_smile:)
 
 ## How to Run
+
 - Ensure you're running the same version from the `.nvmrc` of Node
 - Run `npm i` or `yarn` to install all dependencies
 - Run `npm run watch` or `yarn watch` to run webpack dev server
@@ -19,14 +20,10 @@ Each entry displays:
 
 ~In addition, for those having a picture (besides the thumbnail), please allow the user to tap on the thumbnail to be sent to the full sized picture.~
 
-## What to Include
-
-    - ~Pagination support~
-    - ~Saving pictures in the picture gallery~
+## What's Included
     - App state-preservation/restoration
     - Indicator of unread/read post (updated status, after post it’s selected)
     - Dismiss Post Button (remove the cell from list. Animations required)
-    - ~Dismiss All Button (remove all posts. Animations required)~
     - Support split layout (left side: all posts / right side: detail post)
     - Responsive design
 
