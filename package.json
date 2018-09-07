@@ -46,6 +46,7 @@
     "babel-loader": "^8.0.0",
     "babel-plugin-react-flow-props-to-prop-types": "^0.15.0",
     "babel-plugin-require-context-hook": "^1.0.0",
+    "babel-plugin-styled-components": "^1.6.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "compression-webpack-plugin": "^1.1.12",
@@ -69,12 +70,14 @@
   "dependencies": {
     "axios": "^0.18.0",
     "immutable": "^3.8.2",
+    "moment": "^2.22.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-immutable": "^4.0.0",
-    "redux-saga": "^0.16.0"
+    "redux-saga": "^0.16.0",
+    "styled-components": "^3.4.5"
   },
   "jest": {
     "roots": [

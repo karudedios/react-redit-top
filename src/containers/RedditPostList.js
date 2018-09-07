@@ -5,6 +5,7 @@ import * as RedditActions from 'actions/reddit';
 import { List as ImmutableList } from 'immutable';
 
 import List from 'components/List';
+import RedditItem from 'components/RedditItem';
 
 type Props = {
   posts: ImmutableList,
@@ -24,7 +25,7 @@ class RedditPostList extends React.Component<Props> {
       <List
         root="div"
         items={posts}
-        render={({ data }) => (<li key={data.id}>{data.name}</li>)}
+        render={({ data }) => (<RedditItem key={data.id} post={data} />)}
       />
     );
   }
