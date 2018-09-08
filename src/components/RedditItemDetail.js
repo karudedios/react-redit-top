@@ -13,6 +13,7 @@ const Container = styled.div`
 
   @media(max-width: 800px) {
     margin-left: 0;
+    padding: 50px 10px;
   }
 `;
 
@@ -72,7 +73,11 @@ export default function RedditItemDetail({ post }: Props) {
       { renderThumbnail() }
 
       <h6>
-        <a href={data.get('url')}>
+        <a
+          target="_blank"
+          href={data.get('url')}
+          rel="noopener noreferrer"
+        >
           Source
         </a>
       </h6>

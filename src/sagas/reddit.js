@@ -4,6 +4,7 @@ import {
   all,
   put,
   call,
+  select,
   takeEvery,
 } from 'redux-saga/effects';
 
@@ -14,6 +15,13 @@ function* fetchPosts() {
     yield put({
       payload: posts,
       type: REDDIT_TYPES.FETCH_POSTS_SUCCESS,
+    });
+
+    const firstPost = yield select(state => state.getIn(['reddit', 'posts', 0]));
+
+    yield put({
+      payload: firstPost.data.id,
+      type: REDDIT_TYPES.SELECT_POST,
     });
   } catch (e) {
     yield put({
