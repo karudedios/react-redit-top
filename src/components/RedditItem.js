@@ -95,15 +95,19 @@ const SwipeRight = keyframes`
     opacity: 1;
     transform: translateX(0%);
   }
-  100% {
+  50% {
     opacity: 0;
     transform: translateX(100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(125%);
   }
 `;
 
 const FadingSwipeableDismissed = styled(FadingSwipeable)`
   animation-fill-mode: forwards;
-  ${props => (props.fading ? `animation: 300ms ${SwipeRight} ease-in;` : '')}
+  ${props => (props.fading ? `animation: 400ms ${SwipeRight} ease-in;` : '')}
 `;
 
 export default function RedditItem({
@@ -117,7 +121,11 @@ export default function RedditItem({
 
   const selectPost = () => onPostSelect(post.id);
   const dismissPost = () => onPostDismiss(post.id);
-  const dismissPostWithAnimation = () => onPostDismissAsync(post.id);
+  const dismissPostWithAnimation = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onPostDismissAsync(post.id);
+  };
 
   const renderImagePreview = () => {
     let preview = post.thumbnail;
