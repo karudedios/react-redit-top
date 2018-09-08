@@ -13,6 +13,7 @@ const Container = styled.div`
 
   @media(max-width: 800px) {
     margin-left: 0;
+    padding: 50px 10px;
   }
 `;
 
